@@ -4,6 +4,20 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br />
+  <%= f.label :artist_name %>
+  <input list="artists_names" id="song_artist_name" name="song[artist_name]">
+  <datalist id="artists_names">
+    <% @artists.all.each do |artist| %>
+      <option value="<%= artist.name %>">
+    <% end %>
+  </datalist>
+  
+  <%= f.label :genre %>
+  <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+  <%= f.label :notes %>
+  <% 4.times do |i| %>
+    <input name="song[notes_attributes][][content]" id="song_notes_attributes_<%= i %>_content">
+  <% end %>
 
   <%= f.submit %>
 <% end %>
