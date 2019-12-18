@@ -16,7 +16,7 @@
   <%= f.collection_select(:genre_id, @genres, :id, :name) %>
   <%= f.label :notes %>
   <% 4.times do |i| %>
-    <input name="song[notes_content][]" id="song_notes_attributes_<%= i %>_content">
+    <input name="song[notes_attributes][][content]" id="song_notes_attributes_<%= i %>_content">
   <% end %>
 
   <%= f.submit %>

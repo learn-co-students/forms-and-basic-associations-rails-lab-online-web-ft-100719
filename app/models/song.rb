@@ -3,6 +3,8 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   has_many :notes
 
+  accepts_nested_attributes_for :notes, reject_if: lambda { |attributes| attributes[:content].blank? }, allow_destroy: true
+
   def artist_name
     artist.name
   end
@@ -11,9 +13,4 @@ class Song < ActiveRecord::Base
     self.artist = Artist.find_or_create_by(name: artist_name)
   end
 
-  def notes_content=(note_content_array)
-    note_content_array.each do |note_content|
-      self.notes.build(content: note_content) unless note_content.empty?
-    end
-  end
 end
