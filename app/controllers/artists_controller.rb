@@ -9,6 +9,8 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
+    @artists = Artist.all.order(:name)
+    @genres = Genre.all.order(:name)
   end
 
   def create
