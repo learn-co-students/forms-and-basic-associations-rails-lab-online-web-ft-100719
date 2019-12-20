@@ -6,8 +6,14 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :genre %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %><br>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <%= f.fields_for :notes do |notes_builder|%>
+  <%= notes_builder.label :notes%>
+  <%= notes_builder.text_area :content%>
+  
+  <br>
   <%= f.submit %>
+  <%end%>
 <% end %>
 
 
