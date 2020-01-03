@@ -1,0 +1,6 @@
+<%= form_for @song do |f| %>
+  <input name="song[notes_ids][]">
+  <input name="song[notes_ids][]">
+  <input name="song[notes_ids][]">
+  <input type="submit" value="Submit">
+<% end %>
